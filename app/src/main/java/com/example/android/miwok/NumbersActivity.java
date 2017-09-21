@@ -1,5 +1,9 @@
 package com.example.android.miwok;
 
+/**
+ * Created by VictorHugo on 21/09/2017.
+ */
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
