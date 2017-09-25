@@ -15,11 +15,15 @@
  */
 package com.example.android.miwok;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import static com.example.android.miwok.R.id.numbers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,28 +34,53 @@ public class MainActivity extends AppCompatActivity {
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
 
-        NumberClickListener clickListener = new NumberClickListener();
+
+        // Forma comprida usando um outro .java
+       // NumberClickListener clickListener = new NumberClickListener();
+       // TextView numbers = (TextView)findViewById(R.id.numbers);
+       // numbers.setOnClickListener(clickListener);
+
+        // Forma reduzida direto no MainActivity.java
+
         TextView numbers = (TextView)findViewById(R.id.numbers);
-        numbers.setOnClickListener(clickListener);
-    }
+        numbers.setOnClickListener(new View.OnClickListener(){
+        @Override
+            public void onClick (View view){
+            Intent numbersIntent = new Intent(MainActivity.this, NumbersActivity.class);
 
-    //public void openNumbersList(View view){
-    //    Intent intent = new Intent(this,NumbersActivity.class);
-    //   startActivity(intent);
-    //}
+            startActivity(numbersIntent);
+        }
+        });
 
-    public void openFamilyList(View view){
-        Intent intent = new Intent(this,FamilyActivity.class);
-        startActivity(intent);
-    }
+        TextView colors = (TextView)findViewById(R.id.colors);
+        colors.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View view){
+                Intent colorsIntent = new Intent(MainActivity.this, ColorsActivity.class);
 
-    public void openColorsList(View view){
-        Intent intent = new Intent(this,ColorsActivity.class);
-        startActivity(intent);
-    }
+                startActivity(colorsIntent);
+            }
+        });
 
-    public void openPhrasesList(View view){
-        Intent intent = new Intent(this,PhrasesActivity.class);
-        startActivity(intent);
-    }
+        TextView family = (TextView)findViewById(R.id.family);
+        family.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View view){
+                Intent familyIntent = new Intent(MainActivity.this, FamilyActivity.class);
+
+                startActivity(familyIntent);
+            }
+        });
+
+        TextView phrases = (TextView)findViewById(R.id.phrases);
+        phrases.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View view){
+                Intent phrasesIntent = new Intent(MainActivity.this, PhrasesActivity.class);
+
+                startActivity(phrasesIntent);
+            }
+        });
+        }
+
 }
